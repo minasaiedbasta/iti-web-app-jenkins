@@ -15,7 +15,7 @@ spec:
         app: web-app-jenkins
     spec:
       containers:
-      - image: minasaiedbasta/web-app-jenkins:lts
+      - image: minasaiedbasta/web-app-jenkins:v${BUILD_NUMBER}
         name: web-app-jenkins
         imagePullPolicy: Always
         ports:
