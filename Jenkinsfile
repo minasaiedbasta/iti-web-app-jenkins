@@ -36,10 +36,10 @@ pipeline {
                     withCredentials([file(credentialsId: 'kubernetes_config', variable: 'KUBECONFIG')]) {
                         sh '''
                             export BUILD_NUMBER=$(cat ../build.txt)
-                            mv Deployment/deploy.yaml Deployment/deploy.yaml.tmp
-                            cat Deployment/deploy.yaml.tmp | envsubst > Deployment/deploy.yaml
-                            rm -f Deployment/deploy.yaml.tmp
-                            kubectl apply -f Deployment --kubeconfig ${KUBECONFIG} -n ${BRANCH_NAME}
+                            mv deployment/deploy.yaml deployment/deploy.yaml.tmp
+                            cat deployment/deploy.yaml.tmp | envsubst > deployment/deploy.yaml
+                            rm -f deployment/deploy.yaml.tmp
+                            kubectl apply -f deployment --kubeconfig ${KUBECONFIG} -n ${BRANCH_NAME}
                         '''
                     }
                 }
