@@ -14,9 +14,9 @@ pipeline {
                 script {
                     withCredentials ([usernamePassword(credentialsId:'dockerhub',usernameVariable: 'USER',passwordVariable:'PASS')]) {
                         sh '''
-                            docker build -t minasaiedbasta/web-app-jenkins:1.0 .
+                            docker build -t minasaiedbasta/web-app-jenkins:v${BUILD_NUMBER} .
                             echo $PASS | docker login -u $USER --password-stdin
-                            docker push minasaiedbasta/web-app-jenkins:1.0
+                            docker push minasaiedbasta/web-app-jenkins:v${BUILD_NUMBER}
                             echo ${BUILD_NUMBER} > ../build.txt
                         '''
                     }
